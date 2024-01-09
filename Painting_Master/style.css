@@ -1,0 +1,23 @@
+body{
+	font-family: Arial, Verdana;
+	background-size: cover;
+	background-image: url("../picture/background.jpg");
+   }
+   
+   h1 {
+	text-align: right;
+	margin-right: 100px;     /* 0 pixel margin all around the h1 element */
+	margin-top: -50px;
+	color: #4e5a98;     /* this is a hexadecimal code for a purple color.*/
+	font-size: 40px;
+	text-shadow: 2px 2px 2px #999;  /* horizontal-shadow vertical-shadow blur-radius color */
+   }
+   
+   canvas {
+	display: block;     /* element will stretch left/right as far as it can */
+	border-radius: 30px;
+	border: solid gray 15px;
+	box-shadow: 2px 2px 2px #999;  /* horizontal-shadow vertical-shadow blur-radius color */
+	margin: 50px auto;     /* top & bottom 5px each, left&right auto means horizontally centered */
+	background: white;
+   }
