@@ -11,8 +11,8 @@
 
 ## Developing progress
 1. Test if leap_motion device can use.(Okay)
-2. Build a program with basic controls. (In progress)
-3. Add control function to final presentation.
+2. Build a program with basic controls.(Okay)
+3. Add control function to final presentation.(okay)
 
 ## Problems
 1.
