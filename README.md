@@ -1,5 +1,6 @@
-# leap_motion_final
+# leap_motion_final_report
 
+## The demo video
 - [demo_part1](https://youtu.be/rCLMMBPJpgE)
 - [demo_part2](https://youtu.be/2XexNBB7koQ)
 
@@ -23,8 +24,11 @@
 ![c](windows_websocket/尚未解決.png) 
 
 2.
+### Unsolved problem: Can't normalize.
 We found out that interactionBox is unavilable
 
+3.
+### Reference Link
 
 [gemini](https://leap2.ultraleap.com/gemini-downloads/)
 
