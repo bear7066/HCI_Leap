@@ -19,14 +19,13 @@
 3. Add control function to final presentation.(okaygi)
 
 ## Issues
-
-### The websocket problem, which is a issue that the leap_js company is still developing.
+ 
+1. The websocket problem, which is a issue that the leap_js company is still developing.
 ![c](windows_websocket/尚未解決.png) 
-
-### Unsolved problem: Can't normalize.
+2.  Unsolved problem: Can't normalize.
 We found out that interactionBox is unavilable
 
-### Reference Link
+3. Reference Link
 
 [gemini](https://leap2.ultraleap.com/gemini-downloads/)
 
