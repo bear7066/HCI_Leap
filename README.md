@@ -1,5 +1,8 @@
 # leap_motion_final
 
+- [demo_part1](https://youtu.be/rCLMMBPJpgE)
+- [demo_part2](https://youtu.be/2XexNBB7koQ)
+
 ## Setting up environment
 1. Download ultraleap as the link below
 2. Start up Ultraleap-Tracking-WS.exe in windows_websocket first and don't turn it down.
@@ -12,11 +15,13 @@
 ## Developing progress
 1. Test if leap_motion device can use.(Okay)
 2. Build a program with basic controls.(Okay)
-3. Add control function to final presentation.(okay)
+3. Add control function to final presentation.(okaygi)
 
-## Problems
+## Issues
 1.
+### The websocket problem, which is a issue that the leap_js company is still developing.
 ![c](windows_websocket/尚未解決.png) 
+
 2.
 We found out that interactionBox is unavilable
 

@@ -423,11 +423,7 @@ $(document).ready(function() {
 
 
     function resetALL() {
-        var allSet_length = allSet.length;
-        for(var i=0 ; i<allSet_length ; ++i){
-            $('canvas').removeLayer(allSet[i]);
-        }
-        /*for( var i = 0; i < pathSet.length; ++i ){
+        for( var i = 0; i < pathSet.length; ++i ){
             $('canvas').removeLayer(`userPath${i}`);
         }
         pathSet = [];
@@ -445,7 +441,7 @@ $(document).ready(function() {
 			$('canvas').removeLayer(`rectangle${count}`);// 我加的
             $('canvas').removeLayer(`circle${count}`);// 我加的
             
-		}*/
+		}
     }
 
     var undoFlag = 0;
@@ -776,6 +772,7 @@ $(document).ready(function() {
         });
         flag_copy[order] = true;
         //console.log(`${objCount}`);
+
         newObj.push(`${img.name}${objCount}`);
         objCount++;
         
