@@ -22,7 +22,7 @@ $(document).ready(function() {
 	var isRectangle=false;
     var isCircle= false;
 
-    // DRAW THE COLOR CIRCLE
+    // DRAW THE COLOR CIRCLE BUTTON
     var color_count = 0;  // colors counter
     var color_num = 5;  // total number of colors
     var color_fillStyle = ['#00d', '#f00', '#ffd400', '#7fb80e', '#000'];  // the colors of circles, respectively
