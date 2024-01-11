@@ -20,7 +20,7 @@
 
 ## Issues
  
-1. The websocket problem, which is a issue that the leap_js company is still developing.
+1. The websocket problem, which is an issue that the leap_js company is still developing.
 
 ![c](windows_websocket/尚未解決.png) 
 
