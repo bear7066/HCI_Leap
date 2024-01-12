@@ -70,7 +70,7 @@ $(document).ready(function() {
             //add
             for(var i = 0; i < geoButtonName.length; ++i){
                 if (collisionTest(leapCursorLayer, $('canvas').getLayer(geoButtonName[i])) && hand.grabStrength == 1 && $('canvas').getLayer(geoButtonName[i]).fillStyle == '#aa00ff')
-                    geo_button = geoButtonName[i]
+                    geo_button = geoButtonName[i];
                 $('canvas').getLayer(geoButtonName[i]).fillStyle='#aa00ff';
             }
             //把碰到的按鈕變黑色
@@ -100,13 +100,15 @@ $(document).ready(function() {
                         radius: 5,
                         layer: true,
                         name: 'dot',
-                    });   
+                    });
+                    allSet.push('dot');
                 }   
             }
             //draw geo shape
             for(var i = 0; i < geoButtonName.length; ++i){
                 if (hand.grabStrength === 1 && start_flag == true && geo_button == geoButtonName[i] && !collisionTest(leapCursorLayer, $('canvas').getLayer('lineButton')) 
                 && !collisionTest(leapCursorLayer, $('canvas').getLayer('rectangleButton')) && !collisionTest(leapCursorLayer, $('canvas').getLayer('circleButton'))) { // 手握拳，終點，並劃出直線
+                    allSet.pop();
                     endX=pointerOnCanvas.x;
                     endY=pointerOnCanvas.y;
                     draw_geo_shape(startX,startY,endX,endY, geo_count, allSet, geoButtonName[i]);
@@ -114,8 +116,7 @@ $(document).ready(function() {
                     $('canvas').removeLayer('dot');
                 }
             }
-            //end
-            
+            console.log(allSet);
          
             // undo path
             if(collisionTest(leapCursorLayer, $('canvas').getLayer('undoButton')) ){
@@ -127,7 +128,7 @@ $(document).ready(function() {
             // reset all
             if(hand.grabStrength === 1.0 && collisionTest(leapCursorLayer, $('canvas').getLayer('resetButton'))){
                 resetAll(allSet, newStickers);
-                allset = [];
+                allSet = [];
                 newStickers = [];
             }
             // HL / pen
@@ -206,5 +207,4 @@ function create_tool(button_radius, stickerButtonName, colors, thickButton, stro
     create_color_button(button_radius, colors);
     create_trashCan();
 }
-
 
