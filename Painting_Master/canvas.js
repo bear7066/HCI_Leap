@@ -23,10 +23,210 @@ $(document).ready(function() {
     var pathSet = [];  // stores the userPath(s)
     var isPainting = false;
     var before_pathPoints = 0;
+<<<<<<< HEAD
  
     var pen_opacity = {a:1.0}; // Set the opacity of pen
     var geo_button = 'none';
    
+=======
+
+    var colors = [];  // Array to store all colors (circle), and eraser
+    var thickCircles = [];  // Array to store all thickness (circle)
+    var thickPoints = [];  // Array to store all thickness (point)
+    var penOpacity = 1.0;  // Set the opacity of pen
+
+    var objCount = 0;
+    var flag_copy = [false,false,false,false,false];
+    var newObj = [];
+
+    var isLine= false;
+	var isRectangle=false;
+    var isCircle= false;
+
+    // DRAW THE COLOR CIRCLE BUTTON
+    var color_count = 0;  // colors counter
+    var color_num = 5;  // total number of colors
+    var color_fillStyle = ['#00d', '#f00', '#ffd400', '#7fb80e', '#000'];  // the colors of circles, respectively
+    var color_name = ['blueCircle', 'redCircle', 'yellowCircle', 'greenCircle', 'blackCircle'];  // the names of circles
+    for(color_count = 0; color_count < color_num; ++color_count){
+        $('canvas').drawArc({
+            fillStyle: color_fillStyle[color_count],
+            opacity: 1.0,
+            x: 35,
+            y: 35 + color_count*70,
+            radius: colorRadius,
+            layer: true,
+            name: color_name[color_count],
+            visible: true,
+        });
+        colors.push($('canvas').getLayer(color_name[color_count]));
+    }
+
+    // DRAW THE ERASER BOTTON
+    $('canvas').drawArc({
+        fillStyle: '#fff', // White
+        strokeStyle: 'black', // Border color
+        strokeWidth: 2, // Border width
+        opacity: 1.0,
+        x: 35,
+        y: 385,
+        radius: colorRadius,
+        layer: true,
+        name: 'eraserButton'
+    });
+    colors.push($('canvas').getLayer('eraserButton'));
+    // DRAW TEXT ON ERASER BUTTON
+    $('canvas').drawText({
+        fillStyle: '000', // Black
+        x: 35,
+        y: 35 + color_count*70,
+        width: 50,
+        height: 40,
+        text: 'Eraser',
+        layer: true,
+        name: 'eraserText',
+        intangible: true
+    });
+
+    // DRAW THE PEN BOTTON
+    $('canvas').drawArc({
+        fillStyle: '#111', // Gray
+        strokeStyle: 'black', // Border color
+        strokeWidth: 2, // Border width
+        opacity: 1,
+        x: 35,
+        y: 35 + + 70 + color_count*70,
+        radius: colorRadius,
+        layer: true,
+        visible: false,
+        name: 'penButton'
+    });
+    // DRAW TEXT ON PEN BUTTON
+    $('canvas').drawText({
+        fillStyle: '#fff', // White
+        x: 35,
+        y: 35 + 70 + color_count*70,
+        width: 50,
+        height: 40,
+        text: 'Pen',
+        layer: true,
+        name: 'penText',
+        intangible: true,
+        visible: false,
+    });
+
+    // DRAW THE HIGHLIGHT BOTTON
+    $('canvas').drawArc({
+        fillStyle: '#ff0', // Yellow
+        strokeStyle: 'black', // Border color
+        strokeWidth: 2, // Border width
+        opacity: 0.3,
+        x: 35,
+        y: 35 + + 70 + color_count*70,
+        radius: colorRadius,
+        layer: true,
+        visible: true,
+        name: 'HLButton'
+    });
+    // DRAW TEXT ON HIGHLIGHT BUTTON
+    $('canvas').drawText({
+        fillStyle: '#000', // Black
+        x: 35,
+        y: 35 + 70 + color_count*70,
+        width: 50,
+        height: 40,
+        text: 'Highlight',
+        layer: true,
+        name: 'HLText',
+        intangible: true,
+        visible: true,
+    });
+
+    var changePen_flag = 0;
+    function changePen(){
+        changePen_flag = 1;
+        if( $('canvas').getLayer('HLButton').visible == true ){
+            $('canvas').getLayer('HLButton').visible = false;
+            $('canvas').getLayer('HLText').visible = false;
+            $('canvas').getLayer('penButton').visible = true;
+            $('canvas').getLayer('penText').visible = true;
+            penOpacity = 0.3;
+        }
+        else{
+            $('canvas').getLayer('HLButton').visible = true;
+            $('canvas').getLayer('HLText').visible = true;
+            $('canvas').getLayer('penButton').visible = false;
+            $('canvas').getLayer('penText').visible = false;
+            penOpacity = 1.0;
+        }
+    }
+
+    // DRAW RESET BUTTON
+    $('canvas').drawArc({
+        fillStyle: '#f00', // Red
+        x: 550,
+        y: 565,
+        radius: 30,
+        layer: true,
+        name: 'resetButton',
+    });
+    // DRAW TEXT ON RESET BUTTON
+    $('canvas').drawText({
+        fillStyle: '#fff', // White
+        x: $('canvas').getLayer('resetButton').x,
+        y: $('canvas').getLayer('resetButton').y,
+        width: 50,
+        height: 40,
+        text: 'Reset',
+        layer: true,
+        name: 'resetText',
+        intangible: true
+    });
+
+    // DRAW UNDO BUTTON
+    $('canvas').drawArc({
+        fillStyle: '#f0f', // Red
+        x: 650,
+        y: 565,
+        radius: 30,
+        layer: true,
+        name: 'undoButton',
+    });
+    // DRAW TEXT ON UNDO BUTTON
+    $('canvas').drawText({
+        fillStyle: '#fff', // White
+        x: $('canvas').getLayer('undoButton').x,
+        y: $('canvas').getLayer('undoButton').y,
+        width: 50,
+        height: 40,
+        text: 'Undo',
+        layer: true,
+        name: 'undoText',
+        intangible: true
+    });
+
+    // 存檔鍵
+    // Draw the save button on the canvas
+    // Draw the save button as a circle on the canvasx: 1160,  // X-coordinate
+    $('canvas').drawArc({
+        fillStyle: '#0d6efd', // Blue color
+        x: 1080, y: 565, // Adjust position as needed
+        radius: 30, // Radius of the circle
+        layer: true,
+        name: 'saveButton'
+    });
+
+    $('canvas').drawText({
+        fillStyle: '#fff', // White text
+        x: 1080, y: 565,
+        fontSize: 15,
+        fontFamily: 'Verdana, sans-serif',
+        text: 'Save',
+        layer: true,
+        name: 'saveButtonText',
+        intangible: true
+    });
+>>>>>>> f651116b30c0fe318e4050027f23eb97f602779f
     
     var startX, startY, endX, endY;
     
