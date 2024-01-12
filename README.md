@@ -25,7 +25,7 @@
 ![c](windows_websocket/尚未解決.png) 
 
 2.  Unsolved problem: Can't normalize.
-We found out that interactionBox is unavilable
+We found out that interactionBox is unavilable.
 
 3. Reference Link
 
